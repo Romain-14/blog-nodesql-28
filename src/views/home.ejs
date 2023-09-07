@@ -1,0 +1,18 @@
+
+<main id="home">
+
+    <h1>soon les articles</h1>
+
+    <% for (const data of datas) { %>
+
+        <article>
+            <h2><%= data.label %></h2>
+            <p><%= data.content %></p>
+            <time><%= data.date_added.toLocaleString() %></time>
+            <p><%= data.author %></p>
+            
+        </article>
+
+    <% } %>
+
+</main>
