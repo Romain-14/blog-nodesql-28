@@ -1,12 +1,20 @@
-
 <main id="signin">
+    <form action="/signin" method="post">
+        <input
+            type="email"
+            name="email"
+            placeholder="votre adresse mail"
+            aria-placeholder="Renseignez votre adresse mail"
+        />
 
-    <form action="" method="post">
-        <input type="text" name="alias" placeholder="votre alias" aria-placeholder="Renseignez votre alias">
-        <input type="email" name="email" placeholder="votre adresse mail" aria-placeholder="Renseignez votre adresse mail">
-        <input type="password" name="password" placeholder="votre mot de passe" aria-placeholder="Renseignez votre mot de passe">
+        <input
+            type="password"
+            name="password"
+            placeholder="votre mot de passe"
+            aria-placeholder="Renseignez votre mot de passe"
+        />
+
         <button type="submit">Connexion (icône)</button>
-
     </form>
-
+    <p>Pas encore de compte ? <a href="/signup">en créer un ici</a></p>
 </main>

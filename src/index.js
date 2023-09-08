@@ -21,7 +21,8 @@ app.use(express.static("public"))
         if(!req.session.user){
             req.session.user = { isLogged: false, alias: null}
         }
-        next()
+        res.locals.user = req.session.user;
+        next();
     })
     .use(router);
 

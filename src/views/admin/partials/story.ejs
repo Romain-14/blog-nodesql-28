@@ -7,6 +7,7 @@
                 <th>contenu</th>
                 <th>date d'ajout</th>
                 <th>auteur</th>
+                <th colspan="2">actions</th>
             </tr>
         </thead>
         <tbody>
@@ -16,7 +17,14 @@
                     <td><%= data.content %></td>
                     <td><%= data.date_added.toLocaleString() %></td>
                     <td><%= data.author %></td>
-
+                    <td>
+                        <a href="/admin/story/edit/<%= data.id %>">
+                            <i class="fa-solid fa-pen-to-square" style="color: #309c46;"></i>
+                        </a>
+                    </td>
+                    <td>
+                        <i class="fa-solid fa-trash" style="color: #e41111;"></i>
+                    </td>
                 </tr>
                 <% } %>
         </tbody>

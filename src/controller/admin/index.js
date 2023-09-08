@@ -7,7 +7,7 @@ function home(req, res){
 
 async function story(req, res){
     try {
-        const query = "SELECT label, content, date_added, author FROM story";
+        const query = "SELECT id, label, content, date_added, author FROM story";
         const [datas] = await Query.find(query);
         
         res.status(200).render("admin/layout", {subTemplate: "partials/story", datas});
@@ -49,17 +49,26 @@ function addStory(req, res){
 
             const query2 = "INSERT INTO image (url, story_id) VALUES (?, ?)";
             await Query.write(query2, img);
-            res.redirect("/admin/story");
-            
+            res.redirect("/admin/story");            
 
         });
     } catch (error) {
         throw Error(error);        
     }
-    
-
 }
 
+async function editStoryView(req, res){
+    const query = "SELECT id, label, content, date_added, author FROM story WHERE id = ?";
+    const  [[ story ]]  = await Query.findByValue(query, req.params.id);
+    console.log(story)
+    res.status(200).render("admin/layout", {subTemplate: "partials/storyEditForm", story});
+}
 
+async function editStory(req, res){
+    const data = {...req.body, id: req.params.id};
+    const query = "UPDATE story SET label = ?, content = ? WHERE id = ?";
+    await Query.write(query, data);
+    res.redirect("/admin/story");
+}
 
-export {home, story, addStory};
+export {home, story, addStory, editStoryView, editStory};

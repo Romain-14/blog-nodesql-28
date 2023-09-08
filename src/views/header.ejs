@@ -1,0 +1,27 @@
+<header>
+    <nav>
+        <a href="/" class="<%= template.includes("home") ? "active" : null %>">home</a>
+
+        <% if( !locals.user.isLogged ) { %>
+            <a href="/signin" class="<%= template.includes("signin") ? "active" : null %>">sign in/up</a>
+        <% } %>
+
+        <% if( locals.user.isLogged ) { %>
+
+            <a href="/dashboard">dashboard</a>
+            <a href="/signout">sign out</a>
+        <% } %>
+      
+    </nav>
+
+    <form action="/article/search" method="POST">
+        <input type="search" name="search" id="search" placeholder="Rechercher un article">
+        <button type="submit" class="btn_search"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </form>
+</header>
+
+<% if(locals.user.isLogged) { %>
+    <aside>
+        <p>Hello <%= locals.user.alias %> !</p>
+    </aside>
+<% } %>

@@ -1,0 +1,12 @@
+
+
+<form action="/admin/story/edit/<%= story.id%>" method="post" >
+
+    <input type="text" name="label" placeholder="Ici le titre du nouvel article" value="<%= story.label%>">
+
+    <textarea name="content" placeholder="ici le contenu de l'article"><%= story.content%></textarea> 
+    
+
+    <button type="submit">Modifier l'article</button>
+
+</form>
